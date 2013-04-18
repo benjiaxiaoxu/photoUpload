@@ -42,13 +42,31 @@ public class PhotoUploadServlet extends HttpServlet {
 		try{
 			List items = servletFileUpload.parseRequest(request);
 			Iterator iterator = items.iterator();
+            String rootPath = PhotoUploadServlet.class.getResource(System.getProperty("file.separator")).getFile();
+            StringBuffer path = new StringBuffer();
+            path.append(rootPath);
+            path.append(System.getProperty("file.separator"));
 			while(iterator.hasNext()){
-				
+
 				FileItem item = (FileItem) iterator.next();
 				if(item.isFormField()){//表单
 					System.out.println("文件名");
 					System.out.println(item.getFieldName()+"  "+item.getString());
+                    if(item.getFieldName().equals("city")){
+                    	path.append(item.getString());
+                    }
+                    System.out.println(path);
+                    break;
+                    
 				}else{
+					System.out.println(path);
+					File file = new File(path.toString());
+					if(!file.exists()){
+						System.out.println("1111-----1111");
+						file.mkdir();
+					}
+					
+					
 					if(item.getName() != null && !item.getName().equals("")){//file
 						System.out.println("文件名"+item.getName());
                         System.out.println("文件大小"+item.getSize());
@@ -57,6 +75,7 @@ public class PhotoUploadServlet extends HttpServlet {
 //                        File tempFile = new File(item.getName());//getName�õ����ļ���ư������ڿͻ��˵�·��
 //                        File file = new File(sc.getRealPath("/")+savePath,tempFile.getName());
 //                        item.write(file);
+                        
                         System.out.println("sus");
                     }else{
                     	System.out.println("fal");
