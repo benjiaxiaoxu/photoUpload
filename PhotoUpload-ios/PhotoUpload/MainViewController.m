@@ -98,7 +98,7 @@
     
     //BUTTON
     loginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [loginBtn setTitle:@"登录" forState:UIButtonTypeCustom];
+    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     loginBtn.frame = CGRectMake(120, 260, 120, 40);
     [loginBtn addTarget:self action:@selector(startCarman) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginBtn];

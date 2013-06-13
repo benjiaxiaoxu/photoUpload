@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AGImagePickerController.h"
+
 @class ASIFormDataRequest;
 
-@interface MainViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
+@interface MainViewController : UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,AGImagePickerControllerDelegate>
 {
     UILabel * pathLabel;
     UILabel * nameLabel;
